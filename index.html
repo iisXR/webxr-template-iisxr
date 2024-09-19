@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+    <!-- Simple A-frame template made with resources from three.js a-frame.io and silverslade -->
+    <!-- Creative Commons -->
+    <head>
+        <title>WebXR Application</title>
+        <link rel="icon" type="image/png" href="favicon.ico"/>
+        <meta name="description" content="3D Application">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
+        <script type="text/javascript" src="js/webxr.js"></script>
+        <script type="text/javascript" src="js/joystick.js"></script>
+        <script type="text/javascript" src="js/camera-cube-env.js"></script>
+        <script type="text/javascript" src="js/animation-mixer.js"></script>
+        
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body onload="init();">
+        <a-scene  joystick shadow="type: pcfsoft; autoUpdate: true;" renderer="antialias: true; colorManagement: true; physicallyCorrectLights: true;">
+            <!-- Assets -->
+            <a-assets>
+				<a-asset-item id="animated" src="./assets/animated.gltf"></a-asset-item>  <!-- .glft models can be relplaced with links to .glft or .glb -->
+				<a-asset-item id="Empty" src="./assets/Empty.gltf"></a-asset-item>
+				<a-asset-item id="ground" src="./assets/ground.gltf"></a-asset-item>
+				<a-asset-item id="models" src="./assets/models.gltf"></a-asset-item>
+                <img id="sky"                 src="./resources/sky.jpg">
+                <img id="icon-play"           src="./resources/play.png">
+                <img id="icon-pause"          src="./resources/pause.png">
+                <img id="icon-play-skip-back" src="./resources/play-skip-back.png">
+                <img id="icon-mute"           src="./resources/mute.png">
+                <img id="icon-volume-low"     src="./resources/volume-low.png">
+                <img id="icon-volume-high"    src="./resources/volume-high.png">
+            </a-assets>
+
+            <!-- Entities -->
+            
+			<a-entity id="#animated" animation-mixer="clip: *; loop: forever; clampWhenFinished: true;" gltf-model="#animated" scale="1 1 1" position="4.0617523193359375 4.409115791320801 -3.038460505422336e-08" visible="true" shadow="cast: true"  geometry="" cube-env-map="path: /env/; extension: jpg; reflectivity: 0.99;" ></a-entity>
+			<a-entity id="#Empty"  scale="1 1 1" position="0.0 15.977897644042969 -0.0" visible="true" shadow="cast: true"  geometry="" cube-env-map="path: /env/; extension: jpg; reflectivity: 0.99;" ></a-entity>
+			<a-entity id="#ground" gltf-model="#ground" scale="1 1 1" position="0.0511777326464653 1.5539356470108032 -0.010997121222317219" visible="true" shadow="cast: true"  geometry="" cube-env-map="path: /env/; extension: jpg; reflectivity: 0.99;" ></a-entity>
+			<a-entity id="#models" gltf-model="#models" scale="1 1 1" position="2.6491806507110596 2.6430938243865967 1.6888014078140259" visible="true" shadow="cast: true"  geometry="" cube-env-map="path: /env/; extension: jpg; reflectivity: 0.99;" ></a-entity>
+
+            <!-- Camera AKA PLAYER-->
+            <a-entity id="player" 
+                position="0 -0.2 0" 
+                movement-controls="speed: 0.10000000149011612;">
+                <a-entity id="camera" 
+                    camera="near: 0.001" 
+                    position="0 1.7000000476837158 0" 
+                    look-controls="pointerLockEnabled: true">
+                        <a-entity id="cursor" cursor="fuse: false;" animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 50; from: 	0.1 0.1 0.1; to: 1 1 1"
+                            position="0 0 -0.1"
+                            geometry="primitive: circle; radius: 0.001;"
+                            material="color: #CCC; shader: flat;"
+                            raycaster = "far: 10.0; interval: 1500.0; objects: .clickable,.links">
+                        </a-entity>
+                </a-entity>
+                    <a-entity id="leftHand" oculus-touch-controls="hand: left" vive-controls="hand: left"></a-entity>
+					<a-entity id="rightHand" laser-controls oculus-touch-controls="hand: right" vive-controls="hand: right" raycaster = "far: 10.0; interval: 1500.0; objects: .clickable,.links"></a-entity>
+            </a-entity>
+
+            <!-- Lights -->
+            <a-entity light="intensity: 1.0; castShadow: true; shadowBias: -0.001; shadowCameraFar: 501.02; shadowCameraBottom: 12; shadowCameraFov: 101.79; shadowCameraNear: 0; shadowCameraTop: -5; shadowCameraRight: 10; shadowCameraLeft: -10; shadowRadius: 2" position="1.36586 7.17965 1"></a-entity>
+			<a-entity light="type: ambient; intensity: 1.0"></a-entity>
+            <a-entity light="type: ambient; intensity: 1.0"></a-entity>
+
+            <!-- Sky -->
+            <a-sky src="#sky" material="" geometry="" rotation="0 90 0"></a-sky>
+        </a-scene>
+    </body>
+</html>
+<!-- Creative Commons -->
