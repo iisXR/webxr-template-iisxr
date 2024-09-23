@@ -41,7 +41,15 @@
             geometry="" cube-env-map="path: /env/g_cube/; extension: jpg; reflectivity: 0.99;"></a-entity>
 
             <!-- Camera aka Player -->
-            <a-entity id="player" 
+            <a-entity id="rig" movement-controls position="0 0 0">
+                <a-entity camera position="0 0 0" look-controls="pointerLockEnabled: true"></a-entity>
+             
+                 <a-entity id="leftHand" hand-controls="hand: left; handModelStyle: lowPoly;"></a-entity>
+                 <a-entity id="rightHand" hand-controls="hand: right; handModelStyle: lowPoly;"></a-entity>
+             </a-entity>
+            
+            
+            <!-- a-entity id="player" 
                 position="0 -0.2 0" 
                 movement-controls="speed: 0.10000000149011612;">
                 <a-entity id="camera" 
@@ -57,7 +65,7 @@
                 </a-entity>
                     <a-entity id="leftHand" oculus-touch-controls="hand: left" vive-controls="hand: left"></a-entity>
 					<a-entity id="rightHand" laser-controls oculus-touch-controls="hand: right" vive-controls="hand: right" raycaster = "far: 10.0; interval: 1500.0; objects: .clickable,.links"></a-entity>
-            </a-entity>
+            </a-entity -->
 
             <!-- Lights -->
             <a-entity light="intensity: 1.0; castShadow: true; shadowBias: -0.001; shadowCameraFar: 501.02; shadowCameraBottom: 12; shadowCameraFov: 101.79; shadowCameraNear: 0; shadowCameraTop: -5; shadowCameraRight: 10; shadowCameraLeft: -10; shadowRadius: 2" position="1.36586 7.17965 1"></a-entity>
