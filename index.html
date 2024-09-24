@@ -17,15 +17,19 @@
         <script type="text/javascript" src="js/joystick.js"></script>
         <script type="text/javascript" src="js/camera-cube-env.js"></script>
         <script type="text/javascript" src="js/animation-mixer.js"></script>
+        <script src="https://unpkg.com/super-hands@^3.0.3/dist/super-hands.min.js"></script>
+        <script type="text/javascript" src="js/hand-controls.js"></script>
+
         
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body onload="init();">
         <a-scene  joystick shadow="type: pcfsoft; autoUpdate: true;" renderer="antialias: true; colorManagement: true; physicallyCorrectLights: true;">
-            <!-- Assets  the scr= for "MainMesh" and "sky" can be updated with your own files-->
+            
+          <!-- Assets  the scr= for "MainMesh" and "sky" can be updated with your own files-->
             <a-assets>
-				<a-asset-item id="MainMesh"   src="./assets/xyz1.glb"></a-asset-item>
-                <img id="sky"                 src="./assets/sky.jpg">
+				<a-asset-item id="MainMesh"   src="https://cdn.glitch.global/b0d219ac-a99b-443e-a7cb-7f5af9f5c202/coocoo.glb?v=1727142367632"></a-asset-item>
+                <img id="sky"                 src="https://cdn.glitch.global/b0d219ac-a99b-443e-a7cb-7f5af9f5c202/WWORLD.jpg?v=1727142529918">
                 <img id="icon-play"           src="./resources/play.png">
                 <img id="icon-pause"          src="./resources/pause.png">
                 <img id="icon-play-skip-back" src="./resources/play-skip-back.png">
@@ -38,20 +42,16 @@
             <!-- Note for reflections: To change rflections Repalace "g_cube" with "soft_city","soft_landscape" or "soft_room"-->
             
 			<a-entity id="#MainMesh" animation-mixer="clip: *; loop: forever; clampWhenFinished: true;" gltf-model="#MainMesh" scale="1 1 1" position= "0 0 0" visible="true" shadow="cast: true" 
-            geometry="" cube-env-map="path: /env/g_cube/; extension: jpg; reflectivity: 0.99;"></a-entity>
+            geometry="" cube-env-map="path: /env/soft_landscape/; extension: jpg; reflectivity: 0.99;"></a-entity>
 
-            <!-- Camera aka Player -->
-            <a-entity id="rig" movement-controls position="0 0 0">
-                <a-entity camera position="0 0 0" look-controls="pointerLockEnabled: true"></a-entity>
-             
-                 <a-entity id="leftHand" hand-controls="hand: left; handModelStyle: lowPoly;"></a-entity>
-                 <a-entity id="rightHand" hand-controls="hand: right; handModelStyle: lowPoly;"></a-entity>
-             </a-entity>
-            
-            
-            <!-- a-entity id="player" 
+                      
+      <!-- Camera AKA PLAYER-->
+           
+          
+          <a-entity id="player" 
                 position="0 -0.2 0" 
                 movement-controls="speed: 0.10000000149011612;">
+            
                 <a-entity id="camera" 
                     camera="near: 0.001" 
                     position="0 1.7000000476837158 0" 
@@ -63,9 +63,13 @@
                             raycaster = "far: 10.0; interval: 1500.0; objects: .clickable,.links">
                         </a-entity>
                 </a-entity>
-                    <a-entity id="leftHand" oculus-touch-controls="hand: left" vive-controls="hand: left"></a-entity>
-					<a-entity id="rightHand" laser-controls oculus-touch-controls="hand: right" vive-controls="hand: right" raycaster = "far: 10.0; interval: 1500.0; objects: .clickable,.links"></a-entity>
-            </a-entity -->
+             <!-- Left Controller -->
+              <!--a-entity sphere-collider="objects: a-box" super-hands hand-controls="hand: left"></a-entity-->
+             <a-entity id="leftHand" laser-controls oculus-touch-controls="hand: left" vive-controls="hand: left" raycaster = "far: 10.0; interval: 1500.0; objects: .clickable,.links" visible="true"></a-entity>
+              <!-- Right Controller -->
+            <a-entity id="rightHand" hand-controls="hand: right; handModelStyle: lowPoly; color: #15ACCF" laser-controls raycaster="showLine: true; far: 10; interval: 0; objects: .clickable, a-link;" line="color: #7cfc00; opacity: 0.5" visible="true"></a-entity>
+            </a-entity>
+            
 
             <!-- Lights -->
             <a-entity light="intensity: 1.0; castShadow: true; shadowBias: -0.001; shadowCameraFar: 501.02; shadowCameraBottom: 12; shadowCameraFov: 101.79; shadowCameraNear: 0; shadowCameraTop: -5; shadowCameraRight: 10; shadowCameraLeft: -10; shadowRadius: 2" position="1.36586 7.17965 1"></a-entity>
