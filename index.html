@@ -6,36 +6,26 @@
     <!-- Creative Commons -->
     
     <head>
-        <title>WebXR Application</title>
+       <!-- <title>WebXR Application</title>
         <link rel="icon" type="image/png" href="favicon.ico"/>
         <meta name="description" content="3D Application">
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.5.0/dist/aframe-extras.min.js"></script>               
-		<script type="text/javascript" src="js/webxr.js"></script>
-        <script type="text/javascript" src="js/camera-cube-env.js"></script>
-        <script type="text/javascript" src="js/animation-mixer.js"></script>
-        <script type="text/javascript" src="js/hand-controls.js"></script>
-
+        <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+	 <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
+	 <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.6.0/dist/aframe-extras.min.js"></script>
         
-        <link rel="stylesheet" type="text/css" href="style.css">
-    </head>
+        <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+     </head>
     <body onload="init();">
         <a-scene renderer="colorManagement: true;">
             
           <!-- Assets  the scr= for "MainMesh" and "sky" can be updated with your own files-->
             <a-assets>
-				        <a-asset-item id="MainMesh"   src="./assets/Model.glb"></a-asset-item>
+				<a-asset-item id="MainMesh"   src="./assets/Model.glb"></a-asset-item>
                 <a-asset-item id="navmesh" src="./assets/Nav.glb"></a-asset-item>  
                 <img id="sky"                 src="./assets/sky.jpg">
-                <img id="icon-play"           src="./resources/play.png">
-                <img id="icon-pause"          src="./resources/pause.png">
-                <img id="icon-play-skip-back" src="./resources/play-skip-back.png">
-                <img id="icon-mute"           src="./resources/mute.png">
-                <img id="icon-volume-low"     src="./resources/volume-low.png">
-                <img id="icon-volume-high"    src="./resources/volume-high.png">
+
             </a-assets>
 
             <!-- Entities -->
