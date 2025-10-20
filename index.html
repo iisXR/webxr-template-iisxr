@@ -43,16 +43,17 @@
             geometry="" cube-env-map="path: /env/g_cube/; extension: jpg; reflectivity: 0.99;"></a-entity>
       <a-entity id="Navmesh" nav-mesh gltf-model="#navmesh" visible="false"></a-entity>
                       
-      <!-- Camera AKA PLAYER-->
-           
-                <a-entity id="player" movement-controls="constrainToNavMesh: true;" navigator="cameraRig: #cameraRig; cameraHead: #head; collisionEntities: .collision; ignoreEntities: .clickable" position="0 0 0" rotation="0 0 0">
-        <!-- camera -->
-        <a-entity id="head" camera="active: true" position="0 1 0" look-controls="pointerLockEnabled: true; reverseMouseDrag: true" ></a-entity>
-              <!-- Left Controller -->
-              <a-entity id="leftHand" hand-controls="hand: left; handModelStyle: lowPoly; color: #15ACCF" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head; button: trigger; curveShootingSpeed: 18; landingMaxAngle: 60" visible="true"></a-entity>
-              <!-- Right Controller -->
-              <a-entity id="rightHand" hand-controls="hand: right; handModelStyle: lowPoly; color: #15ACCF" laser-controls raycaster="showLine: true; far: 10; interval: 0; objects: .clickable, a-link;" line="color: #7cfc00; opacity: 0.5" visible="true"></a-entity>
-      </a-entity>
+    <!-- Camera Rig with movement controls -->
+<a-entity id="cameraRig" movement-controls="constrainToNavMesh: true;" navigator="cameraRig: #cameraRig; cameraHead: #head; collisionEntities: .collision; ignoreEntities: .clickable" position="0 0 0" rotation="0 0 0">
+  <!-- Camera -->
+  <a-entity id="head" camera="active: true" position="0 1.6 0" look-controls="pointerLockEnabled: true; reverseMouseDrag: true"></a-entity>
+
+  <!-- Left Controller with teleportation -->
+  <a-entity id="leftHand" hand-controls="hand: left; handModelStyle: lowPoly; color: #15ACCF" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head; button: trigger; curveShootingSpeed: 18; landingMaxAngle: 60" visible="true"></a-entity>
+
+  <!-- Right Controller with laser pointer -->
+  <a-entity id="rightHand" hand-controls="hand: right; handModelStyle: lowPoly; color: #15ACCF" laser-controls raycaster="showLine: true; far: 10; interval: 0; objects: .clickable, a-link;" line="color: #7cfc00; opacity: 0.5" visible="true"></a-entity>
+</a-entity>
       
 
             <!-- Lights -->
